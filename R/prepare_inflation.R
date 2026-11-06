@@ -1,5 +1,8 @@
 # 1. list requirements early
 # (load libraries at the beginning)
+install.packages("here")
+install.packages("tidyverse")
+install.packages("lubridate")
 library(here)
 library(tidyverse)
 library(lubridate)
@@ -52,3 +55,5 @@ inflation <- inflation_raw %>%
 inflation_path <- here("data", "processed", "inflation.rds")
 fs::dir_create(fs::path_dir(inflation_path))
 write_rds(inflation_raw, inflation_path, compress = "gz")
+
+
