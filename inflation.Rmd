@@ -25,20 +25,33 @@ The **dataset** we use stems from the [Bank of England Research datasets](https:
 
 I quote:
 
-> This dataset contains the individual responses to our Inflation Attitudes Survey, a quarterly survey of people’s feelings about inflation and other economic variables like the interest rate. 
+> **This dataset contains the individual responses to our Inflation Attitudes Survey, a quarterly survey of people’s feelings about inflation and other economic variables like the interest rate.** 
 
 ```{r load-inflation}
 # code chunks can come from other scripts, this one is loaded from:
 # `R/prepare_inflation.R`
 ```
 
+
+A code chunk is for longer code/output:
+
+```{r}
+with(mtcars, plot(hp, mpg))
+```
+
+Inline code is for single numbers/short text:
+
+We have `32` cars.
+```
+
+
 ```{r transform-inflation}
 # this chunk is also loaded from the same script
 # note that they must be empty and the names must correspond
 ```
 
-For this dataset the Bank of England asked `r prettyNum(nrow(inflation), big.mark = ".", decimal.mark = ",")` people for their opinion on the perceived and expected inflation.
-The survey has run quarterly since `r min(inflation$year)`.
+*For this dataset the Bank of England asked `r prettyNum(nrow(inflation), big.mark = ".", decimal.mark = ",")` people for their opinion on the perceived and expected inflation.
+The survey has run quarterly since `r min(inflation$year)`.*
 
 ```{r}
 inflation %>% 
@@ -50,6 +63,7 @@ inflation %>%
   ungroup() %>% 
   ggplot() +
   geom_line(aes(date, value, color = name)) +
+  theme(legend.position = c(.1, .9)) +
   NULL
 ```
 
@@ -62,3 +76,12 @@ with(mtcars, plot(hp, mpg))
 Inline code is for single numbers/short text:
 
 We have `32` cars.
++++
+
+
+
+
+
+
+
+

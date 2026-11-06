@@ -18,21 +18,21 @@ inflation <- inflation_raw %>%
     # coded according to "Additional Variables in Dataset" in excel file
     age = fct_recode(
       as.ordered(age),
-      `15-24` = "1",
-      `25-34` = "2",
-      `35-44` = "3",
-      `45-54` = "4",
-      `55-64` = "5",
-      `65+`   = "6",
-      `NA`    = "7",
-      `NA`    = "8"
+      '15-24' = "1",
+      '25-34' = "2",
+      '35-44' = "3",
+      '45-54' = "4",
+      '55-64' = "5",
+      '65+'   = "6",
+      'NA'    = "7",
+      'NA'    = "8"
     ),
     sex = fct_recode(
       as.factor(sex),
       male = "1",
       female = "2",
       other = "3",
-      `NA` = "4"
+      'NA' = "4"
     ),
     education = fct_recode(as.ordered(educ), low = "1", medium = "2", high = "3"),
     perception = ifelse(P_all == 99.0, NA, P_all),
@@ -47,8 +47,7 @@ inflation <- inflation_raw %>%
     year = year(year)
   ) %>% 
   # only select important variables
-  select(age, sex, education, perception, expectation, year, quarter, yyyyqq, date)
-
+  select(age, sex, education, perception, expectation, year, quarter, yyyyqq, date) 
 #----export-inflation---
 inflation_path <- here("data", "processed", "inflation.rds")
 fs::dir_create(fs::path_dir(inflation_path))
